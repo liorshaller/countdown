@@ -1,52 +1,50 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ספירה לאחור</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Countdown to July 2, 2025</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
       text-align: center;
-      background-color: #f4f4f4;
-      padding-top: 100px;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: brightness(0.7);
     }
+
     h1 {
-      font-size: 40px;
+      font-size: 3em;
+      margin-bottom: 20px;
     }
+
     #countdown {
-      font-size: 30px;
-      color: #333;
-      margin-top: 30px;
+      font-size: 2em;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>ספירה לאחור עד ה-02.07.2025</h1>
-  <div id="countdown"></div>
+  <h1>Countdown to July 2, 2025</h1>
+  <div id="countdown">Loading...</div>
 
   <script>
-    const targetDate = new Date("2025-07-02T00:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
+    const targetDate = new Date("2025-07-02T00:00:00");
 
     function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+      const now = new Date();
+      const diff = targetDate - now;
 
-      if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "הגענו לתאריך!";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerHTML =
-        days + " ימים, " + hours + " שעות, " + minutes + " דקות, " + seconds + " שניות";
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+      if (diff <= 0) {
